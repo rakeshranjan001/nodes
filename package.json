@@ -5,9 +5,9 @@
   "engines": {
     "node": "10.x"
   },
-  "main": "App.js",
+  "main": "App.ts",
   "scripts": {
-    "start": "node App.js"
+    "start": "node App.ts"
   },
   "dependencies": {
     "ejs": "^2.5.6",

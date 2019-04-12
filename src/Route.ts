@@ -1,5 +1,6 @@
 const express = require('express')
-
+var login = require('./Routes/Login.ts')
+var search = require('./Routes/Search.ts')
 
 
 const router = express.Router();
@@ -15,5 +16,10 @@ router.get('/browse',(req,res)=>{
         message :"Browse !!" 
     })
 })
+
+router.use('/login',login);
+router.use('/search',search);
+
+
 
 module.exports = router

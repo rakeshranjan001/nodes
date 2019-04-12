@@ -1,7 +1,7 @@
 {
-  "name": "node-js-getting-started",
+  "name": "node-ts",
   "version": "0.3.0",
-  "description": "A sample Node.js app using Express 4",
+  "description": "App using Nodejs Typescript and Express",
   "engines": {
     "node": "10.x"
   },
@@ -10,6 +10,7 @@
     "start": "node App.ts"
   },
   "dependencies": {
+    "@types/express": "^4.16.1",
     "ejs": "^2.5.6",
     "express": "^4.15.2",
     "typescript": "^3.4.3"
@@ -25,7 +26,7 @@
   "keywords": [
     "node",
     "heroku",
-    "express"
-  ],
-  "license": "MIT"
+    "express",
+    "Typescript"
+  ]
 }

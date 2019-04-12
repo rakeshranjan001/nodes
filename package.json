@@ -7,7 +7,7 @@
   },
   "main": "App.ts",
   "scripts": {
-    "start": "ts-node App.ts"
+    "start": "node App.ts"
   },
   "dependencies": {
     "@types/express": "^4.16.1",

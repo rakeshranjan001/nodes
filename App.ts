@@ -1,8 +1,7 @@
 const express = require('express')
-//import * as express from "express";
 const path = require('path')
-//import * as path from "path";
 const PORT = process.env.PORT || 5000
+var router = require("./src/Route.ts")
 
 // express()
 //   .use(express.static(path.join(__dirname, 'public')))
@@ -12,9 +11,10 @@ const PORT = process.env.PORT || 5000
 //   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 const App = express();
-App.get('/',(req,res)=>{
-  res.send({
-    message:"Home using ts-node!"
-  })
-})
+// App.get('/',(req,res)=>{
+//   res.send({
+//     message:"Home using ts-node!"
+//   })
+// })
+App.use('/',router);
 App.listen(PORT)

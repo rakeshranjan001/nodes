@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5000
 const App = express();
 App.get('/',(req,res)=>{
   res.send({
-    message:"Home !"
+    message:"Home using ts-node!"
   })
 })
 App.listen(PORT)

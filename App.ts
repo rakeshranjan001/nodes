@@ -1,7 +1,7 @@
-//const express = require('express')
-import * as express from "express";
-//const path = require('path')
-import * as path from "path";
+const express = require('express')
+//import * as express from "express";
+const path = require('path')
+//import * as path from "path";
 const PORT = process.env.PORT || 5000
 
 // express()

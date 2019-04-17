@@ -45,7 +45,7 @@ login.get('/profile/:id',(req,res)=>{
             res.status(400).json("Not Found")
         }
     })
-    .catch(err=>res.status(404).json('Not Found'))
+    .catch(err=>res.status(400).json('Not Found'))
 
 })
 module.exports = login;

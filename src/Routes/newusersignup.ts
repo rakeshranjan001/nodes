@@ -10,9 +10,9 @@ const db = knex({
     // host: "127.0.0.1", // for locahost db
     // user: "",
     // password: "",
+    //database: "database_name"
     connectionString: process.env.DATABASE_URL,
     ssl:true,
-    //database: "node-masters"
   }
 });
 

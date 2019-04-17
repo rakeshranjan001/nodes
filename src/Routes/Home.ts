@@ -4,6 +4,8 @@ var path = require('path')
 var home = express.Router();
 
 home.get('/',(req,res)=>{
-    res.sendFile('home.html',{root:'./src/views/pages'});
+    res.send({
+        message:"Home Page"
+    })
 })
 module.exports = home;

@@ -16,10 +16,9 @@ const db = knex({
   }
 });
 
-signup.get("/", (req, res) => {
-  res.sendFile("newusersignup.html", { root: "./src/views/pages" });
-});
-module.exports = signup;
+// signup.get("/", (req, res) => {
+//   res.sendFile("newusersignup.html", { root: "./src/views/pages" });
+// });
 
 signup.post("/", (req, res) => {
   const { name, email, password } = req.body;
@@ -48,3 +47,5 @@ signup.post("/", (req, res) => {
       .catch(trx.rollback)
   }).catch(err => res.status(400).json("Error Unable to register"));
 })
+
+module.exports = signup;

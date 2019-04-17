@@ -1,7 +1,7 @@
-const express = require('express')
-const knex = require('knex')
+const express = require('express');
+const knex = require('knex');
 const login = express.Router();
-
+const bcrypt = require('bcrypt-nodejs');
 const db =  knex({
     client :'pg',
     connection:{
@@ -13,13 +13,22 @@ const db =  knex({
     }
 });
 
-login.get('/',(req,res)=>{
-    res.sendFile('login.html',{root:'./src/views/pages'});
-})
 login.post('/',(req,res)=>{
-    res.send({
-        message:"login"
-    });
+    db.select('email','hash').from('login').where('email','=',req.body.email)
+        .then(data => {
+            const isValid = bcrypt.compareSync(req.body.password,data[0].hash);
+            if(isValid){
+                return db.select('*').from('users').where('email','=',req.body.email)
+                    .then(user => {
+                        res.json(user[0])
+                    })
+                    .catch(err => res.status(400).json('Unable to get user'))
+            }
+            else{
+                res.status(400).json('Wrong Credentials')
+            }
+        })
+        .catch(err => res.status(400).json('Wrong Credentials'))
 })
 
 
@@ -29,7 +38,12 @@ login.get('/profile/:id',(req,res)=>{
     let found = false;
     db.select('*').from('users').where({id}) // .where({ id : id })
     .then(user =>{
-        res.json(user[0]);
+        if(user.length){
+            res.json(user[0]);
+        }
+        else{
+            res.status(400).json("Not Found")
+        }
     })
     .catch(err=>res.status(404).json('Not Found'))
 

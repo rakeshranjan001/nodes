@@ -9,11 +9,12 @@ const App = express();
 
 const db =  knex({
     client :'pg',
-    connection:{
-        host: '127.0.0.1',
-        user:'',
-        password:'',
-        database:'node-masters'
+    connection:{// host: "127.0.0.1", // for locahost db
+    // user: "",
+    // password: "",
+    connectionString: process.env.DATABASE_URL,
+    ssl:true,
+    //database: "node-masters"
     }
 });
 

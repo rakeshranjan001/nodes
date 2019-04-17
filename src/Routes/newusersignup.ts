@@ -1,15 +1,19 @@
+//import { dbconnection, DatabaseConnection } from '../dao/DabaseConnection';
 const express = require("express");
 const path = require("path");
-const knex = require("knex");
 const signup = express.Router();
 const bcrypt = require('bcrypt-nodejs');
+
+const knex = require("knex");
 const db = knex({
   client: "pg",
   connection: {
-    host: "127.0.0.1", // for locahost db
-    user: "",
-    password: "",
-    database: "node-masters"
+    // host: "127.0.0.1", // for locahost db
+    // user: "",
+    // password: "",
+    connectionString: process.env.DATABASE_URL,
+    ssl:true,
+    //database: "node-masters"
   }
 });
 

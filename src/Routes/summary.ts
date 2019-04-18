@@ -7,6 +7,13 @@ summary.get('/',(req,res)=>{
     res.send({
         message:"summary"
     })
+});
+
+summary.post('/',(req,res)=>{
+    
+    res.send({
+        message:"summary"
+    })
     // var req_key = '9000f0cc7803a7dfad0160208fc8e835'
     // var req_txt = req.body.txt
     // var req_url = req.body.url

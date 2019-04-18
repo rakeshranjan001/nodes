@@ -1,6 +1,5 @@
 {
   "name": "node-ts",
-  "version": "0.3.0",
   "description": "App using Nodejs Typescript and Express",
   "engines": {
     "node": "10.x"

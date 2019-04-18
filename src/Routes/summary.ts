@@ -2,7 +2,7 @@ var request = require('request')
 var express = require('express')
 var summary = express.Router()
 
-summary.post('/',(req,res)=>{
+summary.get('/',(req,res)=>{
     
     res.send({
         message:"summary"

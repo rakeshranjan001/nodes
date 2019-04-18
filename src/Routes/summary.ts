@@ -1,4 +1,4 @@
-var request = require('request');
+import *  as request from ('request');
 var express = require('express');
 var summary = express.Router();
 

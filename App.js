@@ -20,5 +20,4 @@ var db = knex({
 App.use(bodyParser.urlencoded({ extended: false }));
 App.use(bodyParser.json());
 App.use('/', router);
-App.use('/summary',summary);
 App.listen(PORT);

@@ -43,7 +43,7 @@ summary.post('/',(req,res)=>{
         });
     })
 
-    res.json('Not able to generate summary due to high number of requests')
+    //res.json('Not able to generate summary due to high number of requests')
 })
 
 module.exports = summary;

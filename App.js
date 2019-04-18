@@ -4,6 +4,7 @@ var knex = require('knex');
 var PORT = process.env.PORT || 5000;
 var router = require("./src/Route.ts");
 var login = require("./src/Routes/Login.ts");
+var summary = require("./src/Routes/summary.ts")
 var bodyParser = require('body-parser');
 var App = express();
 var db = knex({
@@ -19,4 +20,5 @@ var db = knex({
 App.use(bodyParser.urlencoded({ extended: false }));
 App.use(bodyParser.json());
 App.use('/', router);
+App.use('/summary',summary);
 App.listen(PORT);

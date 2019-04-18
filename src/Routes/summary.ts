@@ -1,6 +1,6 @@
-var request = require('request')
-var express = require('express')
-var summary = express.Router()
+var request = require('request');
+var express = require('express');
+var summary = express.Router();
 
 summary.get('/',(req,res)=>{
     
@@ -39,4 +39,4 @@ summary.get('/',(req,res)=>{
     //res.json('Not able to generate summary due to high number of requests')
 })
 
-module.exports = summary
+module.exports = summary;

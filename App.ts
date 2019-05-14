@@ -9,7 +9,8 @@ const App = express();
 
 const db =  knex({
     client :'pg',
-    connection:{// host: "127.0.0.1", // for locahost db
+    connection:{
+    // host: "127.0.0.1", // for locahost db
     // user: "",
     // password: "",
     //database: "database_name"

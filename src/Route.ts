@@ -18,4 +18,4 @@ router.use('/login',login);
 router.use('/summary',summary);
 
 
-module.exports = router
+module.exports = router;

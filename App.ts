@@ -21,7 +21,7 @@ const db =  knex({
 });
 
 App.use(cors())
-App.use(bodyParser.urlencoded({extended:false}))
 App.use(bodyParser.json())
+App.use(bodyParser.urlencoded({extended:false}))
 App.use('/',router);
 App.listen(PORT)

@@ -40,7 +40,9 @@ signup.post("/", (req, res) => {
             joined: new Date()
           })
           .then(user => {
-            res.json(user[0]);
+            res.json({
+              message : "successfully registered"
+            });
           })
       })
       .then(trx.commit)

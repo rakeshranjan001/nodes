@@ -13,32 +13,32 @@ const db =  knex({
     }
 });
 
-login.post('/',(req: { body: { email: any; password: any; }; },res: { json: (arg0: any) => void; status: { (arg0: number): { json: (arg0: string) => void; }; (arg0: number): { json: (arg0: string) => void; }; (arg0: number): { json: (arg0: string) => void; }; }; })=>{
+login.post('/',(req,res)=>{
     db.select('email','hash').from('login').where('email','=',req.body.email)
-        .then((data: { hash: any; }[]) => {
+        .then(data => {
             const isValid = bcrypt.compareSync(req.body.password,data[0].hash);
             if(isValid){
                 return db.select('*').from('users').where('email','=',req.body.email)
-                    .then((user: any[]) => {
+                    .then((user) => {
                         res.json(user[0])
                         //res.json('success')
                     })
-                    .catch((err: any) => res.status(400).json('Unable to get user'))
+                    .catch((err) => res.status(400).json('Unable to get user'))
             }
             else{
                 res.status(400).json('Wrong Credentials')
             }
         })
-        .catch((err: any) => res.status(400).json('Wrong Credentials'))
+        .catch((err) => res.status(400).json('Wrong Credentials'))
 })
 
 
 
-login.get('/profile/:id',(req: { params: { id: any; }; },res: { json: (arg0: any) => void; status: { (arg0: number): { json: (arg0: string) => void; }; (arg0: number): { json: (arg0: string) => void; }; }; })=>{
+login.get('/profile/:id',(req,res)=>{
     const{id} =req.params;
     let found = false;
     db.select('*').from('users').where({id}) // .where({ id : id })
-    .then((user: any[]) =>{
+    .then(user =>{
         if(user.length){
             res.json(user[0]);
         }
@@ -46,7 +46,7 @@ login.get('/profile/:id',(req: { params: { id: any; }; },res: { json: (arg0: any
             res.status(400).json("Not Found")
         }
     })
-    .catch((err: any)=>res.status(400).json('Not Found'))
+    .catch(err=>res.status(400).json('Not Found'))
 
 })
 module.exports = login;

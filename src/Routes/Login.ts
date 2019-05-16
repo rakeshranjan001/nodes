@@ -13,26 +13,28 @@ const db =  knex({
     }
 });
 
-login.get('/',(req,res)=>{
-    res.send({
-        messgae:"reached login block"
-    })
-    // db.select('email','hash').from('login').where('email','=',req.body.email)
-    //     .then(data => {
-    //         const isValid = bcrypt.compareSync(req.body.password,data[0].hash);
-    //         if(isValid){
-    //             return db.select('*').from('users').where('email','=',req.body.email)
-    //                 .then((user) => {
-    //                     res.json(user[0])
-    //                     //res.json('success')
-    //                 })
-    //                 .catch((err) => res.status(400).json('Unable to get user'))
-    //         }
-    //         else{
-    //             res.status(400).json('Wrong Credentials')
-    //         }
-    //     })
-    //     .catch((err) => res.status(400).json('Wrong Credentials'))
+login.post('/',(req,res)=>{
+   // res.send({
+   //     message:"reached login block"
+   // })
+    db.select('email','hash').from('login').where('email','=',req.body.email)
+        .then(data => {
+            const isValid = bcrypt.compareSync(req.body.password,data[0].hash);
+            if(isValid){
+                return db.select('*').from('users').where('email','=',req.body.email)
+                    .then((user) => {
+                        //res.json(user[0])
+                        res.send({
+                            message:"success"
+                        })
+                    })
+                    .catch((err) => res.status(400).json('Unable to get user'))
+            }
+            else{
+                res.status(400).json('Wrong Credentials')
+            }
+        })
+        .catch((err) => res.status(400).json('Wrong Credentials'))
 })
 
 

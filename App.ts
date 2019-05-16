@@ -6,7 +6,7 @@ const router = require("./src/Route.ts")
 const login = require("./src/Routes/Login.ts")
 const bodyParser = require('body-parser')
 const App = express();
-
+const cors = require('cors');
 const db =  knex({
     client :'pg',
     connection:{
@@ -20,6 +20,7 @@ const db =  knex({
     }
 });
 
+App.use(cors())
 App.use(bodyParser.urlencoded({extended:false}))
 App.use(bodyParser.json())
 App.use('/',router);

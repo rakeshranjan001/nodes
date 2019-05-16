@@ -23,10 +23,10 @@ login.post('/',(req,res)=>{
             if(isValid){
                 return db.select('*').from('users').where('email','=',req.body.email)
                     .then((user) => {
-                        //res.json(user[0])
-                        res.send({
-                            message:"success"
-                        })
+                        res.json(user[0])
+                        // res.send({
+                        //     message:"success"
+                        // })
                     })
                     .catch((err) => res.status(400).json('Unable to get user'))
             }

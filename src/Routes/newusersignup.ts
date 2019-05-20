@@ -7,18 +7,10 @@ const knex = require("knex");
 const db = knex({
   client: "pg",
   connection: {
-    // host: "127.0.0.1", // for locahost db
-    // user: "",
-    // password: "",
-    //database: "database_name"
     connectionString: process.env.DATABASE_URL,
-    ssl:true,
+    ssl: true,
   }
 });
-
-// signup.get("/", (req, res) => {
-//   res.sendFile("newusersignup.html", { root: "./src/views/pages" });
-// });
 
 signup.post("/", (req, res) => {
   const { name, email, password } = req.body;
@@ -41,8 +33,10 @@ signup.post("/", (req, res) => {
           })
           .then(user => {
             res.json({
-              message : "successfully registered"
+              status:200,
+              message: "successfully registered"
             });
+            createUserTab;
           })
       })
       .then(trx.commit)
@@ -50,4 +44,8 @@ signup.post("/", (req, res) => {
   }).catch(err => res.status(400).json("Error Unable to register"));
 })
 
+function createUserTab() {  
+  var maxID = db.max('id').from('users')
+  console.log(maxID);
+}
 module.exports = signup;

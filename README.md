@@ -1,13 +1,13 @@
 # node js 
- >  JavaScript
+ > JavaScript
  > Typescript
  > Expressjs
  > REST
 
- Basic Skeleton for developing a nodejs API, with user registraion and authentication features.
+ Basic Skeleton for developing a nodejs API, with user registraion and authentication features, storing data in a Database.
 
 The REST end-points are exposed through src/route.ts .
-
+* Front-end https://github.com/Shadow-9661/React .
 * Steps to setup on local
 
 Need to have node and npm installed

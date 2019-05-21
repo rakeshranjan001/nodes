@@ -33,7 +33,6 @@ signup.post("/", (req, res) => {
           })
           .then(user => {
             res.json({
-              status:200,
               message: "successfully registered"
             });
             createUserTab;
